@@ -41,7 +41,6 @@ Respond ONLY with valid JSON in this exact format:
 export async function analyzeMeal(imageBase64: string): Promise<MealAnalysis> {
   const apiKey = process.env.AZURE_OPENAI_API_KEY
   const endpoint = process.env.AZURE_OPENAI_ENDPOINT
-  const deploymentName = process.env.AZURE_OPENAI_DEPLOYMENT_NAME || 'gpt-4o-mini'
 
   if (!apiKey || !endpoint) {
     // Return mock data for demo purposes when API keys aren't configured
@@ -50,7 +49,7 @@ export async function analyzeMeal(imageBase64: string): Promise<MealAnalysis> {
 
   try {
     const response = await fetch(
-      `${endpoint}/openai/deployments/${deploymentName}/chat/completions?api-version=2024-02-15-preview`,
+      `${endpoint}`,
       {
         method: 'POST',
         headers: {

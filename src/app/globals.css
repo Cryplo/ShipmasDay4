@@ -4,20 +4,62 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
-body {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+  --bulk-primary: #37352f;
+  --bulk-secondary: #787774;
+  --bulk-background: #ffffff;
+  --bulk-surface: #fbfbfa;
+  --bulk-border: #e3e2de;
+  --bulk-hover: #f7f6f3;
 }
 
-/* Remove default focus outlines and replace with flat style */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  letter-spacing: -0.011em;
+  background: var(--bulk-background);
+  color: var(--bulk-primary);
+}
+
+/* Premium focus states */
 *:focus {
   outline: none;
 }
 
 *:focus-visible {
-  outline: 2px solid #525252;
-  outline-offset: 2px;
+  outline: none;
+  box-shadow: 0 0 0 2px var(--bulk-background), 0 0 0 4px #2383e2;
+  border-radius: 4px;
+}
+
+/* Notion-style selection */
+::selection {
+  background: rgba(35, 131, 226, 0.15);
+}
+
+/* Smooth scrollbar - webkit */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d4d4d4;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a3a3a3;
 }
 
 /* Custom file input styling */
@@ -27,4 +69,55 @@ input[type="file"] {
 
 input[type="file"]::file-selector-button {
   display: none;
+}
+
+/* Notion-style typography utilities */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .text-title {
+    @apply text-bulk-700 font-semibold tracking-tight;
+  }
+  
+  .text-body {
+    @apply text-bulk-600 leading-relaxed;
+  }
+  
+  .text-caption {
+    @apply text-bulk-400 text-xs tracking-wide;
+  }
+  
+  .notion-hover {
+    @apply transition-all duration-150 ease-out;
+  }
+  
+  .notion-hover:hover {
+    @apply bg-bulk-150;
+  }
+  
+  .notion-card {
+    @apply bg-white border border-bulk-200 rounded-notion-lg;
+  }
+  
+  .notion-card-hover {
+    @apply notion-card transition-colors duration-150;
+  }
+  
+  .notion-card-hover:hover {
+    @apply bg-bulk-100;
+  }
+}
+
+/* Smooth page transitions */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Prevent layout shift on scrollbar */
+  html {
+    overflow-y: scroll;
+  }
 }
