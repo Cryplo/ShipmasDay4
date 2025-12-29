@@ -1,0 +1,76 @@
+Opus 4.5 Prompt — Protein-First CalAI (Single Card Flow)
+Role:
+You are a senior full-stack engineer and product designer building a production-quality web application.
+Objective:
+Build a Protein-First calorie estimation web app as a single-page card interface. The app should initially show a blank card with unknown protein/calories. When the user uploads a meal photo, the card dynamically reveals:
+Protein estimate
+Calorie range (approximate)
+Protein sufficiency verdict
+Exactly one actionable protein-focused suggestion
+Focus on protein adequacy over calorie precision. The app should be immediately usable and visually minimal.
+Core Product Constraints (Non-Negotiable)
+1. Anti-Vibe-Coded / Flat Design
+NO gradients
+NO shadows (box-shadow, text-shadow)
+Avoid neon colors, playful typography, excessive animations
+Use:
+Neutral spacing
+Consistent alignment
+Clear hierarchy
+Practical, restrained, flat design
+Light theme only (white/near-white background, dark text, muted accent sparingly)
+2. Single-Page Card Layout
+Only one card on the page
+Initial state: protein/calories/food details hidden
+After image upload:
+Dynamically reveal protein, calories, verdict, and recommendation
+Optional subtle hover effect for card interactivity (no shadows or gradients)
+3. Tech Stack
+Next.js (App Router)
+TypeScript
+Tailwind CSS
+Server Actions for AI call
+No authentication
+No database
+Local state only
+AI / Model Requirements (Microsoft Foundry)
+Model: GPT-4o-mini (vision-enabled) via Azure Foundry
+Accepts meal photo (primary) or text description (fallback)
+Returns structured output:
+Protein estimate (~grams)
+Calorie range (broad)
+Protein verdict (Adequate / Low for muscle maintenance / Low for satiety)
+One simple protein-focused recommendation
+Rules:
+Only one suggestion, no extra tips
+No medical advice, extreme dieting, or guilt-inducing language
+Output strictly formatted for card display
+UX Flow
+Single blank card on page:
+Protein: ?  
+Calories: ?  
+Verdict: ?  
+Recommendation: ?
+User uploads meal photo → server action sends to Foundry GPT-4o-mini
+Card updates in place with structured results:
+Protein
+Calories
+Verdict
+Recommendation
+No navigation, no extra pages
+Prompting Strategy (Internal Guidance)
+Prioritize protein estimation
+Calorie numbers are secondary and approximate
+Emphasize practical, sustainable advice
+Keep output consistent for card display
+Design Guidance
+Flat design only: no shadows, no gradients
+Neutral sans-serif font (Inter recommended)
+Light background, dark text
+Copy calm, factual, confident
+Optional subtle hover/transition (color or border only)
+Final Goal
+Deliver a single-page, flat, protein-centric health card that:
+Instantly reacts to user-uploaded meal photos
+Reveals protein, calories, verdict, and one actionable recommendation
+Looks professional, minimal, and trustworthy
